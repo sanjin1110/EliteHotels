@@ -80,7 +80,7 @@ const New = () => {
       };
 
       await axios.post("/auth/register", newUser);
-      navigate('/login')
+      await navigate('/login')
     } catch (err) {
       console.log(err);
     }

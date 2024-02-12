@@ -1,11 +1,11 @@
-import "./newRoom.scss";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import axios from "axios";
 import { useState } from "react";
+import Navbar from "../../components/navbar/Navbar";
+import Sidebar from "../../components/sidebar/Sidebar";
 import { roomInputs } from "../../formSource";
 import useFetch from "../../hooks/useFetch";
-import axios from "axios";
+import "./newRoom.scss";
+import { useNavigate } from 'react-router-dom';
 
 const NewRoom = () => {
   const [info, setInfo] = useState({});
@@ -13,6 +13,7 @@ const NewRoom = () => {
   const [rooms, setRooms] = useState([]);
 
   const { data, loading, error } = useFetch("/hotels");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -23,6 +24,7 @@ const NewRoom = () => {
     const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
     try {
       await axios.post(`/rooms/${hotelId}`, { ...info, roomNumbers });
+      await navigate('/rooms')
     } catch (err) {
       console.log(err);
     }

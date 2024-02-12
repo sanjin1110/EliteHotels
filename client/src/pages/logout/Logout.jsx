@@ -1,16 +1,16 @@
-import "./logout.css"
-import React from 'react';
 import axios from 'axios';
+import React from 'react';
+import "./logout.css";
 
 class LogoutButton extends React.Component {
-    handleLogout = () => {
-        axios.post('/auth/logout') // 
+    handleLogout = async () => {
+        await axios.post('/auth/logout') // 
             .then(response => {
                 window.location.href = '/login'; // Redirect to login page
             })
             .catch(error => {
                 console.error("Logout error:", error);
-                // Handle error if needed
+                
             });
     }
 

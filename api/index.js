@@ -14,7 +14,7 @@ import usersRoute from "./routes/users.js";
 const app = express();
 dotenv.config();
 app.use(session({
-  secret: '8hEnPGeoBqGUT6zksxt4G95gW+uMdzwe7EVaRnp0xRI=', // Replace with a strong secret key
+  secret:"8hEnPGeoBqGUT6zksxt4G95gW+uMdzwe7EVaRnp0xRI=", 
   resave: false,
   saveUninitialized: true
 }));

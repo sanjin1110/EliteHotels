@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import "./logout.css"
 class LogoutButton extends React.Component {
-    handleLogout = () => {
-        axios.post('/auth/logout') // Replace with your actual API endpoint
+    handleLogout = async () => {
+        await axios.post('/auth/logout') // Replace with your actual API endpoint
             .then(response => {
                 // Redirect or perform other actions after successful logout
                 window.location.href = '/login'; // Redirect to login page
